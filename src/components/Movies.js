@@ -1,25 +1,20 @@
 import React from "react";
 import { movies } from "../data";
-import { v4 as uuidv4} from "uuid";
 
-function Movies({movies}) {
+function Movies() {
 
-  const movieList = movies.map((movie) => (
-    <div key={uuidv4}>
-      <h2>{movie.title}</h2>
-      <p>Time: {movie.time}</p>
-      <ul>
-        {movie.genres.map((genre, index) => (
-          <li key={uuidv4}>{genre}</li>
-        ))}
-      </ul>
-    </div>
-  ));
+  const movieList = movies.map((movie) => {
+    return <div key={movie.title}>{movie.title}{movie.time}</div>})
+  
+  const genreList = movies.map(movie => (<li key={movie.title}>{movie.genres}</li>))
 
   return (
   <div>
     <h1>Movies Page</h1>
-    {movieList}
+      {movieList}
+    <ul>
+      {genreList}
+    </ul>
   </div>
     )
 }
